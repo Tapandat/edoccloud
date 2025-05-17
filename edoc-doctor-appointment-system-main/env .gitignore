@@ -1,0 +1,5 @@
+DB_HOST=edoccloud-server.mysql.database.azure.com
+DB_PORT=3306
+DB_USER=huwrpslkki
+DB_PASS=FlS59LHwU$6ib1vJ
+DB_NAME=edoccloud_db
