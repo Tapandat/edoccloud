@@ -1,8 +1,0 @@
-.git
-*.zip
-*.tar.gz
-*.env
-node_modules
-vendor
-*.log
-.DS_Store
