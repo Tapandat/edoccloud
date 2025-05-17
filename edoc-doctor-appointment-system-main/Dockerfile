@@ -1,18 +1,21 @@
-# Utiliser PHP 7.3 avec Apache
-FROM php:7.3-apache
+# ✅ Use latest stable PHP + Apache base image
+FROM php:8.1-apache
 
-# Installer les extensions PHP nécessaires
+# ✅ Enable required PHP extensions
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Copier tout le projet dans le conteneur
-COPY . /var/www/html/
+# ✅ Enable Apache rewrite module (needed for .htaccess, clean URLs)
+RUN a2enmod rewrite
 
-# Modifier les permissions pour Apache
+# ✅ Set working directory and copy project files
+WORKDIR /var/www/html
+COPY . .
+
+# ✅ Set correct ownership for Apache
 RUN chown -R www-data:www-data /var/www/html
 
-# Exposer le port 80 pour Apache
+# ✅ Expose port 80 (used by Apache)
 EXPOSE 80
 
-# Lancer Apache
+# ✅ Start Apache in foreground (needed for Docker)
 CMD ["apache2-foreground"]
-
